@@ -1,49 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Book Your Show</title>
-    <link rel="stylesheet" href="./CSS/navbar.css">
-</head>
-<body>
+    <link rel="icon" href="../IMAGES/logo.png" />
+    <link rel="stylesheet" href="./CSS/navbar.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- HEADER SECTION START HERE=============================================== -->
     <header class="nav_first_head">
-        <div class="nav_first_header container">
-          <div class="left_nav">
-            <a href="#">
-              <img src="./IMAGES/bookmyshow-logo-31BC3C7354-seeklogo.com (2).jpg" alt="" class="left_nav_logo">
-            </a>
-            <div class="left_nav_search">
-              <div class="search_icon"><i class="fa-solid fa-magnifying-glass"></i></div>
-              <input type="search" placeholder="Search for Movies, Events, Plays, Sports and Activities" class="search_bar">
+      <div class="nav_first_header container">
+        <div class="left_nav">
+          <a href="#">
+            <img
+              src="./IMAGES/bookmyshow-logo-31BC3C7354-seeklogo.com (2).jpg"
+              alt=""
+              class="left_nav_logo"
+            />
+          </a>
+          <div class="left_nav_search">
+            <div class="search_icon">
+              <i class="fa-solid fa-magnifying-glass"></i>
             </div>
+            <input
+              type="search"
+              placeholder="Search for Movies, Events, Plays, Sports and Activities"
+              class="search_bar"
+            />
           </div>
-          <div class="right_nav">
-            <div class="right_nav_city">
-              <span class="city_name">Kolkata</span>
-              <i class="fa-solid fa-caret-down"></i>
-            </div>
-            <div class="right_nav_rest">
-              <button class="sign_btn btn">sign in</button>
-              <div class="ham_icon"><i class="fa-solid fa-bars"></i></div>
-            </div>
-            <div class="right_nav_rest1">
-              <div class="user_icon"><i class="fa-solid fa-user"></i></div>
-              <p class="username">Hi,<span class="user_name">Guest</span></p>
-            </div>
-    
+        </div>
+        <div class="right_nav">
+          <div class="right_nav_city">
+            <span class="city_name">Ranchi</span>
+            <i class="fa-solid fa-caret-down"></i>
           </div>
+          <div class="right_nav_rest">
+            <button class="sign_btn btn">sign in</button>
+            <div class="ham_icon"><i class="fa-solid fa-bars"></i></div>
           </div>
-    
-      </header>
+          <div class="right_nav_rest1">
+            <div class="user_icon"><i class="fa-solid fa-user"></i></div>
+            <p class="username">Hi,<span class="user_name">Guest</span></p>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- ============================HEADER SECTION END HERE============================= -->
 
+    <!-- POP UP OF POPULAR CITY =============================================== -->
 
-     
+    <div class="city_pop_up_container">
+      <div class="city_pop_up">
+        <div class="city_pop_search">
+          <div class="search_icon">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </div>
+          <input
+            type="search"
+            placeholder="Search for your city"
+            class="search_bar city_bar"
+          />
+        </div>
+        <p>Popular cities</p>
+        <ul class="city_list">
+          <li>
+            <div class="city_box">
+              <img src="./Images/mumbai.avif" alt="Mumbai" class="cityimg" />
+              <div class="cityTrans">Mumbai</div>
+            </div>
+          </li>
+          <li>
+            <div class="city_box">
+              <img src="./Images/ncr.avif" alt="Delhi-ncr" class="cityimg" />
+              <div class="cityTrans">Delhi-ncr</div>
+            </div>
+          </li>
+          <li>
+            <div class="city_box">
+              <img src="./Images/bang.avif" alt="Bengaluru" class="cityimg" />
+              <div class="cityTrans">Bengaluru</div>
+            </div>
+          </li>
+          <li>
+            <div class="city_box">
+              <img src="./Images/hyd.avif" alt="Hydrabad" class="cityimg" />
+              <div class="cityTrans">Hydrabad</div>
+            </div>
+          </li>
+          <li>
+            <div class="city_box">
+              <img src="./Images/ahd.avif" alt="Ahmedabad" class="cityimg" />
+              <div class="cityTrans">Ahmedabad</div>
+            </div>
+          </li>
+          <li>
+            <div class="city_box">
+              <img src="./Images/chd.avif" alt="Chandigarh" class="cityimg" />
+              <div class="cityTrans">Chandigarh</div>
+            </div>
+          </li>
+          <li>
+            <div class="city_box">
+              <img src="./Images/chen.avif" alt="Chennai" class="cityimg" />
+              <div class="cityTrans">Chennai</div>
+            </div>
+          </li>
+          <li>
+            <div class="city_box">
+              <img src="./Images/pune.avif" alt="Pune" class="cityimg" />
+              <div class="cityTrans">Pune</div>
+            </div>
+          </li>
+          <li>
+            <div class="city_box">
+              <img src="./Images/kolk.avif" alt="Kolkata" class="cityimg" />
+              <div class="cityTrans">Kolkata</div>
+            </div>
+          </li>
+          <li>
+            <div class="city_box">
+              <img src="./Images/koch.avif" alt="Kochi" class="cityimg" />
+              <div class="cityTrans">Kochi</div>
+            </div>
+          </li>
+        </ul>
+        <p class="view">View All Cities</p>
 
-     
-   
-    
-      
-</body>
+        <!-- <div class="lowerpart_city">
+      <p class="other">Other Cities</p>
+      <div class="other_city">
+        <ul>
+          <li><a href="#" class="cityTrans"> Aalo</a></li>
+          <li><a href="#" class="cityTrans">Addanki</a></li>
+          <li><a href="#" class="cityTrans">Agar Malwa</a></li>
+          <li><a href="#" class="cityTrans">Ahmedabad</a></li>
+          <li><a href="#" class="cityTrans">Akbarpur</a></li>
+          <li><a href="#" class="cityTrans">Alakode</a></li>
+          <li><a href="#" class="cityTrans">Alibaug</a></li>
+          <li><a href="#" class="cityTrans">Alwar</a></li>
+          <li><a href="#" class="cityTrans">Amravati</a></li>
+          <li><a href="#" class="cityTrans"> Aalo</a></li>
+          <li><a href="#" class="cityTrans">Addanki</a></li>
+          <li><a href="#" class="cityTrans">Agar Malwa</a></li>
+          <li><a href="#" class="cityTrans">Ahmedabad</a></li>
+          <li><a href="#" class="cityTrans">Akbarpur</a></li>
+          <li><a href="#" class="cityTrans">Alakode</a></li>
+          <li><a href="#" class="cityTrans">Alibaug</a></li>
+          <li><a href="#" class="cityTrans">Alwar</a></li>
+          <li><a href="#" class="cityTrans">Amravati</a></li>
+
+        </ul>
+        <ul>
+          <li><a href="#" class="cityTrans"> Aalo</a></li>
+          <li><a href="#" class="cityTrans">Addanki</a></li>
+          <li><a href="#" class="cityTrans">Agar Malwa</a></li>
+          <li><a href="#" class="cityTrans">Ahmedabad</a></li>
+          <li><a href="#" class="cityTrans">Akbarpur</a></li>
+          <li><a href="#" class="cityTrans">Alakode</a></li>
+          <li><a href="#" class="cityTrans">Alibaug</a></li>
+          <li><a href="#" class="cityTrans">Alwar</a></li>
+          <li><a href="#" class="cityTrans">Amravati</a></li>
+          <li><a href="#" class="cityTrans"> Aalo</a></li>
+          <li><a href="#" class="cityTrans">Addanki</a></li>
+          <li><a href="#" class="cityTrans">Agar Malwa</a></li>
+          <li><a href="#" class="cityTrans">Ahmedabad</a></li>
+          <li><a href="#" class="cityTrans">Akbarpur</a></li>
+          <li><a href="#" class="cityTrans">Alakode</a></li>
+          <li><a href="#" class="cityTrans">Alibaug</a></li>
+          <li><a href="#" class="cityTrans">Alwar</a></li>
+          <li><a href="#" class="cityTrans">Amravati</a></li>
+        </ul>
+        <ul>
+          <li><a href="#" class="cityTrans"> Aalo</a></li>
+          <li><a href="#" class="cityTrans">Addanki</a></li>
+          <li><a href="#" class="cityTrans">Agar Malwa</a></li>
+          <li><a href="#" class="cityTrans">Ahmedabad</a></li>
+          <li><a href="#" class="cityTrans">Akbarpur</a></li>
+          <li><a href="#" class="cityTrans">Alakode</a></li>
+          <li><a href="#" class="cityTrans">Alibaug</a></li>
+          <li><a href="#" class="cityTrans">Alwar</a></li>
+          <li><a href="#" class="cityTrans">Amravati</a></li>
+          <li><a href="#" class="cityTrans"> Aalo</a></li>
+          <li><a href="#" class="cityTrans">Addanki</a></li>
+          <li><a href="#" class="cityTrans">Agar Malwa</a></li>
+          <li><a href="#" class="cityTrans">Ahmedabad</a></li>
+          <li><a href="#" class="cityTrans">Akbarpur</a></li>
+          <li><a href="#" class="cityTrans">Alakode</a></li>
+          <li><a href="#" class="cityTrans">Alibaug</a></li>
+          <li><a href="#" class="cityTrans">Alwar</a></li>
+          <li><a href="#" class="cityTrans">Amravati</a></li>
+        </ul>
+        <ul>
+          <li><a href="#" class="cityTrans"> Aalo</a></li>
+          <li><a href="#" class="cityTrans">Addanki</a></li>
+          <li><a href="#" class="cityTrans">Agar Malwa</a></li>
+          <li><a href="#" class="cityTrans">Ahmedabad</a></li>
+          <li><a href="#" class="cityTrans">Akbarpur</a></li>
+          <li><a href="#" class="cityTrans">Alakode</a></li>
+          <li><a href="#" class="cityTrans">Alibaug</a></li>
+          <li><a href="#" class="cityTrans">Alwar</a></li>
+          <li><a href="#" class="cityTrans">Amravati</a></li>
+          <li><a href="#" class="cityTrans"> Aalo</a></li>
+          <li><a href="#" class="cityTrans">Addanki</a></li>
+          <li><a href="#" class="cityTrans">Agar Malwa</a></li>
+          <li><a href="#" class="cityTrans">Ahmedabad</a></li>
+          <li><a href="#" class="cityTrans">Akbarpur</a></li>
+          <li><a href="#" class="cityTrans">Alakode</a></li>
+          <li><a href="#" class="cityTrans">Alibaug</a></li>
+          <li><a href="#" class="cityTrans">Alwar</a></li>
+          <li><a href="#" class="cityTrans">Amravati</a></li>
+        </ul>
+        <ul>
+          <li><a href="#" class="cityTrans"> Aalo</a></li>
+          <li><a href="#" class="cityTrans">Addanki</a></li>
+          <li><a href="#" class="cityTrans">Agar Malwa</a></li>
+          <li><a href="#" class="cityTrans">Ahmedabad</a></li>
+          <li><a href="#" class="cityTrans">Akbarpur</a></li>
+          <li><a href="#" class="cityTrans">Alakode</a></li>
+          <li><a href="#" class="cityTrans">Alibaug</a></li>
+          <li><a href="#" class="cityTrans">Alwar</a></li>
+          <li><a href="#" class="cityTrans">Amravati</a></li>
+          <li><a href="#" class="cityTrans"> Aalo</a></li>
+          <li><a href="#" class="cityTrans">Addanki</a></li>
+          <li><a href="#" class="cityTrans">Agar Malwa</a></li>
+          <li><a href="#" class="cityTrans">Ahmedabad</a></li>
+          <li><a href="#" class="cityTrans">Akbarpur</a></li>
+          <li><a href="#" class="cityTrans">Alakode</a></li>
+          <li><a href="#" class="cityTrans">Alibaug</a></li>
+          <li><a href="#" class="cityTrans">Alwar</a></li>
+          <li><a href="#" class="cityTrans">Amravati</a></li>
+        </ul>
+      </div>
+      <p class="hide">Hide All Cities</p>
+    </div> -->
+      </div>
+    </div>
+
+    <!-- POP UP OF POPULAR CITY =============================================== -->
+    <script src="./JS/Navbar.js"></script>
+  </body>
 </html>
