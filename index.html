@@ -56,6 +56,39 @@
     </header>
     <!-- ============================HEADER SECTION END HERE============================= -->
 
+
+     <!----------------------------------------------Signin-POP-UP----------------------------------------------->
+  <div class="sign_pop_up_container">
+    <div class="sign_pop_up">
+      <a href="#" class="modalclose"><i class="fa-solid fa-xmark"></i></a>
+      <p>Get Started</p>
+      <div class="sign_box" id="google_btn">
+        <i class="fa-brands fa-google"></i>
+        <span>Continue with Google</span>
+      </div>
+      <div class="sign_box">
+        <i class="fa-solid fa-envelope"></i>
+        <span>Continue with Email</span>
+      </div>
+      <div class="sign_box">
+        <i class="fa-brands fa-apple"></i>
+        <span>Continue with Apple</span>
+      </div>
+      <div class="noOtp">
+        <p>Login without OTP</p>
+      </div>
+      <p class="pop_text">OR</p>
+      <div class="phone">
+         <input type="tel" placeholder="Continue with mobile number" class="phone_num" id="number">
+      </div>
+      <p class="country_code">(Please add country code before phone number)</p>
+      <div id="recaptcha-container"></div>
+      <div class="height"></div>
+      <p class="terms">I agree to the <a href="#">Terms & Conditions</a>& <a href="#">Privacy Policy</a></p>
+      <div class="continue" onClick="phoneAuth()">Continue</div>
+    </div>
+  </div>
+
     <!-- POP UP OF POPULAR CITY =============================================== -->
 
     <div class="city_pop_up_container">
