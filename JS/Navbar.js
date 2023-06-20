@@ -42,3 +42,21 @@ cityPopUp.addEventListener("click",(event)=>{
         cityName.innerText=event.target.alt;
         }
 })
+
+
+// FOR SIGNIN POPUP ============================================
+
+const rightNavRest = document.querySelector(".right_nav_rest");
+const signButton = document.querySelector(".sign_btn");
+const signPopUpContainer = document.querySelector(".sign_pop_up_container");
+const modalClose = document.querySelector(".modalclose");
+
+
+
+signButton.addEventListener("click",()=>{
+    signPopUpContainer.classList.add("display_block");
+});
+
+modalClose.addEventListener("click",()=>{
+    signPopUpContainer.classList.remove("display_block");
+})
