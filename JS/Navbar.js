@@ -60,3 +60,47 @@ signButton.addEventListener("click",()=>{
 modalClose.addEventListener("click",()=>{
     signPopUpContainer.classList.remove("display_block");
 })
+
+// HAMBERGER=======================================================
+
+const hamburgerLogin = document.querySelector(".hamburger_login");
+const hamburger = document.querySelector(".nav_hamburger");
+const hamIcon = document.querySelector(".ham_icon");
+const hamburger1 = document.querySelector(".nav_hamburger1");
+const hamburgerSignOut = document.querySelector(".hamburger_signOut");
+const hamburgerContainer = document.querySelector(".nav_hamburger_container");
+const Hamclose = document.querySelector(".Hamclose")
+
+hamIcon.addEventListener("click",()=>{
+    hamburger.classList.toggle("display_block");
+ })
+ 
+//  mainBody.addEventListener("click",()=>{
+//      hamburger.classList.remove("display_block");
+//      hamburger1.classList.remove("display_block");
+//  })
+  
+ hamburgerLogin.addEventListener("click",()=>{
+     hamburger.classList.remove("display_block");
+     signPopUpContainer.classList.add("display_block");
+ 
+ })
+
+ Hamclose.addEventListener('click',()=>{
+    hamburger.classList.remove('display_block')
+ })
+ 
+//  rightNavRest1.addEventListener("click",()=>{
+//     console.log("hi")
+//   hamburger1.classList.add("display_block");
+//  })
+ 
+ hamburgerSignOut.addEventListener("click",()=>{
+     rightNavRest1.classList.remove("display_flex");
+     rightNavRest.classList.remove("display_none");
+     hamburger1.classList.remove("display_block");
+ 
+     // localStorage.setItem("isLoggedIn", false);
+     localStorage.removeItem("isLoggedIn");
+ })
+ 
