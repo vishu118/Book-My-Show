@@ -17,10 +17,10 @@ const Base_Url = "https://api.themoviedb.org/3/"
 const img_url = "https://image.tmdb.org/t/p/w500"    //------>  This is the Base URL For Images
 
 
-const nowPlayingMoviesUrl = Base_Url + "movie/now_playing?" + Api_key + "&language=hi-US&page=1";
+const nowPlayingMoviesUrl = Base_Url + "movie/now_playing?" + Api_key + "&language=en-US&page=1";
 const popularMoviesUrl = Base_Url + "movie/popular?" + Api_key + "&language=en-US&page=3";
 const topRatedMoviesUrl = Base_Url + "movie/top_rated?" + Api_key + "&language=en-US&page=2";
-const latestMoviesUrl = Base_Url + "movie/now_playing?" + Api_key + "&language=en-US&page=2";
+const latestMoviesUrl = Base_Url + "movie/upcoming?" + Api_key + "&language=en-US&page=1";
 
 
 const trendingMovieNamesUrl = Base_Url + "discover/movie?" + Api_key + "&sort_by=popularity.desc&page=1&primary_release_year=2022&with_original_language=ml|bn|ta";
@@ -117,6 +117,8 @@ function showMovies(movies) {
 //Upcoming Movies
 
 
+
+
 const getlikedIndianMovies = async function (url) {
 
     const fetchedDataOfLikedIndianMovies = await fetch(url, {
@@ -124,13 +126,14 @@ const getlikedIndianMovies = async function (url) {
         headers: {
             Accept: "application/json",
             Authorization: auth
-            
+
         }
     })
     const data = await fetchedDataOfLikedIndianMovies.json();
     console.log(data.results)
     showLikedIndianMovies(data.results)
 }
+
 
 getlikedIndianMovies(likedIndianMovies)
 
