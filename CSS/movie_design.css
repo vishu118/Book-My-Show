@@ -53,21 +53,21 @@
   }
   
     
-  .recommnd_movie,.likedIndian_movie,.nowPlaying_movie,.popular_movie,.topRated_movie,.latest_movie,.trending_movie{
+  .recommnd_movie,.Hindi_movie,.likedIndian_movie,.nowPlaying_movie,.popular_movie,.topRated_movie,.latest_movie,.trending_movie{
     margin:3rem auto;
     width: 85%;
   }
-  .recommnd_movie h1,.likedIndian_movie h1,.nowPlaying_movie h1,.popular_movie h1,.topRated_movie h1,.latest_movie h1,.trending_movie h1{
+  .recommnd_movie h1,.Hindi_movie h1,.likedIndian_movie h1,.nowPlaying_movie h1,.popular_movie h1,.topRated_movie h1,.latest_movie h1,.trending_movie h1{
     font-size: 1.5rem;
     color: rgb(61, 61, 61);
     margin-bottom: 1.2rem;
     margin-top: 1.2rem;
   }
-  .recommended_movies_container,.likedIndianMovies_container,.nowPlayingMovies_container,.popularMovies_container,.topRatedMovies_container,.latestMovies_container{
+  .recommended_movies_container,.hindiMovies_container,.likedIndianMovies_container,.nowPlayingMovies_container,.popularMovies_container,.topRatedMovies_container,.latestMovies_container{
   display: flex;
   overflow-x: scroll;
   /* justify-content:center; */
-  gap:1.3rem;
+  gap:1.4rem;
   }
   .recommended_movies_container::-webkit-scrollbar,.likedIndianMovies_container::-webkit-scrollbar,.nowPlayingMovies_container::-webkit-scrollbar,.popularMovies_container::-webkit-scrollbar,.topRatedMovies_container::-webkit-scrollbar,.latestMovies_container::-webkit-scrollbar{
     display: none;

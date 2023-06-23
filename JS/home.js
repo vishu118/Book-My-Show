@@ -38,17 +38,19 @@ const nowPlayingMoviesUrl = Base_Url + "movie/now_playing?" + Api_key + "&langua
 
 const likedIndianMovies = Base_Url + "discover/movie?" + Api_key + "&sort_by=popularity.desc&page=2&primary_release_year=2022&with_origin_country=IN";
 
-const recommendedMoviesUrl = Base_Url + "discover/movie?" + Api_key + "&sort_by=popularity.desc&page=1&primary_release_year=2022&with_original_language=hi";
+const recommendedMoviesUrl = Base_Url + "discover/movie?" + Api_key + "&sort_by=popularity.desc&page=1&primary_release_year=2022&with_original_language=hi&page=2";
 
-const popularMoviesUrl = Base_Url + "movie/popular?" + Api_key + "&language=en-US&page=3";
+// const popularMoviesUrl = Base_Url + "movie/popular?" + Api_key + "&language=en-US&page=3";
 
-const topRatedMoviesUrl = Base_Url + "movie/top_rated?" + Api_key + "&language=en-US&page=2";
+const popularMoviesUrl = Base_Url + "discover/movie?" + Api_key + "&sort_by=popularity.desc&page=2&primary_release_year=2023&with_origin_country=IN";
+
+const topRatedMoviesUrl = Base_Url + "movie/top_rated?" + Api_key + "&language=en-US&page=1";
 
 const latestMoviesUrl = Base_Url + "movie/upcoming?" + Api_key + "&language=en-US&page=1";
 
-const trendingMovieNamesUrl = Base_Url + "discover/movie?" + Api_key + "&sort_by=popularity.desc&page=1&primary_release_year=2022&with_original_language=ml|bn|ta";
+const trendingMovieNamesUrl = Base_Url + "discover/movie?" + Api_key + "&sort_by=popularity.desc&page=1&primary_release_year=2023&with_original_language=ml|bn|ta";
 
-const popularMoviesUrl2 = Base_Url + "discover/movie?" + Api_key + "&sort_by=popularity.desc&page=1&primary_release_year=2021&with_original_language=ml|bn|ta";
+const popularMoviesUrl2 = Base_Url + "discover/movie?" + Api_key + "&sort_by=popularity.desc&page=1&primary_release_year=2023&with_original_language=ml|bn|ta";
 
 // async function getMovies(url) {
 //     const fetchedData = await fetch(url, {
@@ -71,7 +73,7 @@ const getMovies = async (url) => {
   showMovies(data.results);
 };
 
-getMovies(nowPlayingMoviesUrl);
+getMovies(recommendedMoviesUrl);
 
 function mapMovieLanguage(lang) {
   let movieLangObj = {
@@ -289,5 +291,24 @@ function showLatestMovies(movies) {
   movies.forEach((movie) => {
     let movieEl = createMovieElement(movie);
     latestMoviesContainerEl.appendChild(movieEl);
+  });
+}
+
+
+
+const getHindiMovies = async function (url) {
+  const fetchedData = await fetch(url) 
+
+  const data = await fetchedData.json();
+  console.log(data.results);
+  showHindiMovies(data.results);
+};
+getHindiMovies(popularMoviesUrl);
+function showHindiMovies(movies) {
+  console.log(movies);
+
+  movies.forEach((movie) => {
+    let movieEl = createMovieElement(movie);
+    bollywoodMoviesContainerEl.appendChild(movieEl);
   });
 }
