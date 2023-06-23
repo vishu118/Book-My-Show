@@ -12,11 +12,12 @@ const bollywoodMoviesContainerEl = document.querySelector(".hindiMovies_containe
 
 
 
-// variable declaration For the resuseablility while hitting Api End Points
+// variable declaration For the resuseablility while hitting Api End Points=======================
+
 const auth = "57b428c0e112b579eb26e2f43ff08b0f"
 const Api_key = "api_key=2e302e23979f60ced7d629e4168670c9"
 const Base_Url = "https://api.themoviedb.org/3/"
-const img_url = "https://image.tmdb.org/t/p/w500"    //------>  This is the Base URL For Images
+const img_url = "https://image.tmdb.org/t/p/w500"    //------This is the Base URL For Images-------//
 
 
 
@@ -36,25 +37,69 @@ const popularMoviesUrl2 = Base_Url + "discover/movie?" + Api_key + "&sort_by=pop
 
 
 
-async function getMovies(url) {
-    const fetchedData = await fetch(url, {
-        method: "GET",
-        headers: {
-            Accept: "application/json",
-            Authorization: auth
-        }
-    })
+// async function getMovies(url) {
+//     const fetchedData = await fetch(url, {
+//         method: "GET",
+//         headers: {
+//             Accept: "application/json",
+//             Authorization: auth
+//         }
+//     })
+//     const data = await fetchedData.json();
+//     showMovies(data.results); 
+// }
+// getMovies(recommendedMoviesUrl);
+
+
+
+
+
+const getMovies = async(url) =>{
+    const fetchedData = await fetch(url)
+    console.log(fetchedData)
     const data = await fetchedData.json();
+    console.log(data.results)
     showMovies(data.results); 
 }
-getMovies(recommendedMoviesUrl);
+
+getMovies(latestMoviesUrl);
 
 
+function mapMovieLanguage(lang) {
 
+    let movieLangObj = {
+        "en": "English",
+        "hi": "Hindi",
+        "te": "Telegu",
+        "ta": "Tamil",
+        "ml": "Malayalam",
+        "bn": "Bengali"
+    }
 
+    return movieLangObj[lang];
 
+}
 
+function createMovieElement(movie){
+    let { title, poster_path, vote_average, popularity, original_language, id } = movie;
+    original_language = mapMovieLanguage(original_language);
 
+    const movieEl = document.createElement("div")
+    movieEl.classList.add('movie')
+    movieEl.innerHTML = `
+    <div class="parent_movie"> 
+    <a href="./HTML/movieExpanded.html?id=${id}"><img src="${img_url + poster_path}" alt="" /></a>
+    <div class="like_vote">
+    <p><i class="fa-solid fa-thumbs-up"></i> ${Number(popularity / 10).toFixed(1)}k likes</p>
+    <p><i class="fa-solid fa-star"></i> ${vote_average}/10</p>
+    </div>
+  </div>
+    <h2>${title}</h2>
+   <p>${genresOfMovie}</p>
+    
+    `
+    return movieEl;
+}
 
 
 
@@ -76,7 +121,7 @@ getMovies(recommendedMoviesUrl);
 // const popularMoviesContainerEl = document.querySelector(".popularMovies_container");
 // const topRatedMoviesContainerEl = document.querySelector(".topRatedMovies_container");
 // const latestMoviesContainerEl = document.querySelector(".latestMovies_container");
-// const bollywoodMoviesContainerEl = document.querySelector(".hindiMovies_container");
+// const bollywoodMoviesContainerEl = document.querySelector(.hindiMovies_container");
 // const trendingMoviesContainerEl = document.querySelector(".trendingMovies_container");
 
 // //------------------------------------------------------------------------------------
@@ -114,76 +159,75 @@ getMovies(recommendedMoviesUrl);
 // getMovies(recommendedMoviesUrl);
 
 
-// function mapMovieLanguage(lang) {
+function mapMovieLanguage(lang) {
 
-//     let movieLangObj = {
-//         "en": "English",
-//         "hi": "Hindi",
-//         "te": "Telegu",
-//         "ta": "Tamil",
-//         "ml": "Malayalam",
-//         "bn": "Bengali"
-//     }
+    let movieLangObj = {
+        "en": "English",
+        "hi": "Hindi",
+        "te": "Telegu",
+        "ta": "Tamil",
+        "ml": "Malayalam",
+        "bn": "Bengali"
+    }
 
-//     return movieLangObj[lang];
+    return movieLangObj[lang];
 
-// }
+}
 
-// function createMovieElement(movie) {
-//     let { title, poster_path, vote_average, popularity, original_language, id } = movie;
-//     original_language = mapMovieLanguage(original_language);
+function createMovieElement(movie) {
+    let { title, poster_path, vote_average, popularity, original_language, id } = movie;
+    original_language = mapMovieLanguage(original_language);
 
-//     const movieEl = document.createElement("div")
-//     let genres = ["Action/Mystery", "Comedy/Drama/Romance", "Action/Thriller", "Drama/Mystery"]
-//     let rndm = Math.floor(Math.random() * genres.length)
-//     let genresOfMovie = genres[rndm]
-//     movieEl.classList.add("movies")
-//     movieEl.innerHTML = `
-//     <div class="parent_movie"> 
-//     <a href="./HTML/movieExpanded.html?id=${id}"><img src="${img_url + poster_path}" alt="" /></a>
-//     <div class="like_vote">
-//     <p><i class="fa-solid fa-thumbs-up"></i> ${Number(popularity / 10).toFixed(1)}k likes</p>
-//     <p><i class="fa-solid fa-star"></i> ${vote_average}/10</p>
-//     </div>
-//   </div>
-//     <h2>${title}</h2>
-//    <p>${genresOfMovie}</p>
-//     `;
+    const movieEl = document.createElement("div")
+    let genres = ["Action/Mystery", "Comedy/Drama/Romance", "Action/Thriller", "Drama/Mystery"]
+    let rndm = Math.floor(Math.random() * genres.length)
+    let genresOfMovie = genres[rndm]
+    movieEl.classList.add("movies")
+    movieEl.innerHTML = `
+    <div class="parent_movie"> 
+    <a href="./HTML/movieExpanded.html?id=${id}"><img src="${img_url + poster_path}" alt="" /></a>
+    <div class="like_vote">
+    <p><i class="fa-solid fa-thumbs-up"></i> ${Number(popularity / 10).toFixed(1)}k likes</p>
+    <p><i class="fa-solid fa-star"></i> ${vote_average}/10</p>
+    </div>
+    </div>
+    <h2>${title}</h2>
+    <p>${genresOfMovie}</p>
+    `;
 
-//     return movieEl;
-// }
+    return movieEl;
+}
 
 
-// function showMovies(movies) {
+function showMovies(movies) {
   
-//     movies.forEach((movie) => {
+    movies.forEach((movie) => {
       
-//       let { title, poster_path, vote_average, overview, popularity, original_language,id, genre_ids } = movie
-//        original_language = mapMovieLanguage(original_language);
+      let { title, poster_path, vote_average, overview, popularity, original_language,id, genre_ids } = movie
+       original_language = mapMovieLanguage(original_language);
 
-//         const movieEl = document.createElement("div")
-//         let genres = ["Action/Mystery","Comedy/Drama/Romance","Action/Thriller","Drama/Mystery"]
-//         let rndm = Math.floor(Math.random() *genres.length)
-//         let genresOfMovie = genres[rndm]
-//         movieEl.classList.add("movies")
-//         movieEl.innerHTML = `
-//                  <div class="parent_movie">
-//                  <a href="./HTML/movieExpanded.html?id=${id}"><img src="${img_url + poster_path}" alt="" /></a>
-//                  <div class="like_vote">
-//                  <p><i class="fa-solid fa-thumbs-up"></i> ${Number(popularity/10).toFixed(1)}k likes</p>
-//                  <p><i class="fa-solid fa-star"></i> ${vote_average}/10</p>
-//                  </div>
-//                  </div>
-//                  <h2 style="color: white;font-weight: 100;">${title}</h2>
-//                  <p style="color: white;font-weight: 100;">${original_language}</p>
-// `
-//         recommendedMovieContainerEl.appendChild(movieEl)
+        const movieEl = document.createElement("div")
+        let genres = ["Action/Mystery","Comedy/Drama/Romance","Action/Thriller","Drama/Mystery"]
+        let rndm = Math.floor(Math.random() *genres.length)
+        let genresOfMovie = genres[rndm]
+        movieEl.classList.add("movies")
+        movieEl.innerHTML = `
+                 <div class="parent_movie">
+                 <a href="./HTML/movieExpanded.html?id=${id}"><img src="${img_url + poster_path}" alt="" /></a>
+                 <div class="like_vote">
+                 <p><i class="fa-solid fa-thumbs-up"></i> ${Number(popularity/10).toFixed(1)}k likes</p>
+                 <p><i class="fa-solid fa-star"></i> ${vote_average}/10</p>
+                 </div>
+                 </div>
+                 <h2 style="color: white;font-weight: 100;">${title}</h2>
+                 <p style="color: white;font-weight: 100;">${original_language}</p>
+              `
+                 recommendedMovieContainerEl.appendChild(movieEl)
+ })
 
-//     })
+}
 
-// }
-
-// //-------------------------------------------------------------------------------------------------------------------------------
+//=================================================================================================================================================================================================//
 
 // //Upcoming Movies
 
@@ -217,7 +261,11 @@ getMovies(recommendedMoviesUrl);
 // //     });
 // // }
 
-// //-------------------------------------------------------------------------------------------------------------
+
+
+//===================================================================================================================================================================================================//
+
+
 // //Premering Movies 
 
 // // const getNowPlayingMovies = async function (url) {
@@ -245,13 +293,12 @@ getMovies(recommendedMoviesUrl);
 // // }
 
 
-// //---------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
-// //popular
+// popular
 
 
-
-// // const getPopularMovies = async function (url) {
+// const getPopularMovies = async function (url) {
 
 // //     const fetchedDataOfGetPopularMovies = await fetch(url, {
 // //         method: "GET",
