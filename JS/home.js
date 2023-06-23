@@ -3,6 +3,9 @@
 const nowPlayingMoviesContainerEl = document.querySelector(
   ".nowPlayingMovies_container"
 );
+const latestMoviesContainerEl = document.querySelector(
+  ".latestMovies_container"
+);
 const indianMoviesContainerEl = document.querySelector(
   ".likedIndianMovies_container"
 );
@@ -18,16 +21,11 @@ const topRatedMoviesContainerEl = document.querySelector(
 const trendingMoviesContainerEl = document.querySelector(
   ".trendingMovies_container"
 );
-const latestMoviesContainerEl = document.querySelector(
-  ".latestMovies_container"
-);
 const bollywoodMoviesContainerEl = document.querySelector(
   ".hindiMovies_container"
 );
 
-const UpcomingMovies_containerEl = document.querySelector(
-  "UpcomingMovies_container"
-);
+
 
 // variable declaration For the resuseablility while hitting Api End Points=======================
 
@@ -37,8 +35,6 @@ const Base_Url = "https://api.themoviedb.org/3/";
 const img_url = "https://image.tmdb.org/t/p/w500"; //------This is the Base URL For Images-------//
 
 const nowPlayingMoviesUrl = Base_Url + "movie/now_playing?" + Api_key + "&language=en-US&page=1";
-
-const UpcomingMoviesUrl = Base_Url + "movie/upcoming?" + Api_key + "&language=en-US&page=2";
 
 const likedIndianMovies = Base_Url + "discover/movie?" + Api_key + "&sort_by=popularity.desc&page=2&primary_release_year=2022&with_origin_country=IN";
 
@@ -168,28 +164,6 @@ function showMovies(movies) {
 
 //-------------------------------------------------------------------------------------------------------------------------------
 
-//Upcoming Movies
-
-const getUpcomingMovies = async function (url) {
-    const fetchedData= await fetch(url);
-    const data = await fetchedData.json();
-    console.log(data.results);
-    showUpcomingMovies(data.results);
-  };
-  
-  getUpcomingMovies(UpcomingMoviesUrl);
-  
-  function showUpcomingMovies(movies) {
-    console.log(movies);
-  
-    movies.forEach((movie) => {
-      let movieEl = createMovieElement(movie);
-      UpcomingMovies_containerEl.appendChild(movieEl);
-    });
-  }
-  
-
-
 
 
 
@@ -302,18 +276,13 @@ function showTrendingMovies(movies) {
 //Latest Movies
 
 const getLatestMovies = async function (url) {
-  const fetchedDataOfLatestMovies = await fetch(url, {
-    method: "GET",
-    headers: {
-      Accept: "application/json",
-      Authorization: auth,
-    },
-  });
+  const fetchedDataOfLatestMovies = await fetch(url) 
+
   const data = await fetchedDataOfLatestMovies.json();
   console.log(data.results);
   showLatestMovies(data.results);
 };
-getLatestMovies(recommendedMoviesUrl);
+getLatestMovies(latestMoviesUrl);
 function showLatestMovies(movies) {
   console.log(movies);
 
