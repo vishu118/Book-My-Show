@@ -11,7 +11,7 @@ const cityPopUpContainer = document.querySelector(".city_pop_up_container");
 
 viewCity.addEventListener("click",(e)=>{
     e.stopPropagation();
-  lowerpartCity.classList.add("display_block");
+   lowerpartCity.classList.add("display_block");
    viewCity.classList.add("display_none");
 })
 

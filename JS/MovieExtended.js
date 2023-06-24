@@ -22,5 +22,10 @@ let moviesYouMayLikeUrl = `${Base_Url}movie/${id}/similar?${Api_key}`
 const renderMovieDetails = async()=>{
   const res = await fetch(`${Base_Url}movie/${id}?${Api_key}`); //========= Fetching Specific Movie Details using id
   const Data = await res.json();
-  
+   const {original_title, backdrop_path, vote_count, vote_average, runtime, release_date, overview, poster_path, genres,spoken_languages,production_companies,adult} = Data;    // destrucuturing data of specific movie using id;
+   console.log(Data)
 }
+
+renderMovieDetails()
+
+

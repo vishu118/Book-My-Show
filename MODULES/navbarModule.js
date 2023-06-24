@@ -84,7 +84,7 @@ export function getNavbar(){
   
       <div class="nav_hamburger_row1">
         <div class="hamburger_gift_icon">
-          <img src="./Images/rewards_login.avif" alt="" width="40px">
+          <img src="../Images/rewards_login.avif" alt="" width="40px">
         </div>
         <p>Unlock Special Offers & <br> Great Benefits</p>
         <button class="hamburger_login">Login/Register</button>
@@ -214,61 +214,61 @@ export function getNavbar(){
         <ul class="city_list">
           <li>
             <div class="city_box">
-              <img src="./Images/mumbai.avif" alt="Mumbai" class="cityimg" />
+              <img src="../Images/mumbai.avif" alt="Mumbai" class="cityimg" />
               <div class="cityTrans">Mumbai</div>
             </div>
           </li>
           <li>
             <div class="city_box">
-              <img src="./Images/ncr.avif" alt="Delhi-ncr" class="cityimg" />
+              <img src="../Images/ncr.avif" alt="Delhi-ncr" class="cityimg" />
               <div class="cityTrans">Delhi-ncr</div>
             </div>
           </li>
           <li>
             <div class="city_box">
-              <img src="./Images/bang.avif" alt="Bengaluru" class="cityimg" />
+              <img src="../Images/bang.avif" alt="Bengaluru" class="cityimg" />
               <div class="cityTrans">Bengaluru</div>
             </div>
           </li>
           <li>
             <div class="city_box">
-              <img src="./Images/hyd.avif" alt="Hydrabad" class="cityimg" />
+              <img src="../Images/hyd.avif" alt="Hydrabad" class="cityimg" />
               <div class="cityTrans">Hydrabad</div>
             </div>
           </li>
           <li>
             <div class="city_box">
-              <img src="./Images/ahd.avif" alt="Ahmedabad" class="cityimg" />
+              <img src="../Images/ahd.avif" alt="Ahmedabad" class="cityimg" />
               <div class="cityTrans">Ahmedabad</div>
             </div>
           </li>
           <li>
             <div class="city_box">
-              <img src="./Images/chd.avif" alt="Chandigarh" class="cityimg" />
+              <img src="../Images/chd.avif" alt="Chandigarh" class="cityimg" />
               <div class="cityTrans">Chandigarh</div>
             </div>
           </li>
           <li>
             <div class="city_box">
-              <img src="./Images/chen.avif" alt="Chennai" class="cityimg" />
+              <img src="../Images/chen.avif" alt="Chennai" class="cityimg" />
               <div class="cityTrans">Chennai</div>
             </div>
           </li>
           <li>
             <div class="city_box">
-              <img src="./Images/pune.avif" alt="Pune" class="cityimg" />
+              <img src="../Images/pune.avif" alt="Pune" class="cityimg" />
               <div class="cityTrans">Pune</div>
             </div>
           </li>
           <li>
             <div class="city_box">
-              <img src="./Images/kolk.avif" alt="Kolkata" class="cityimg" />
+              <img src="../Images/kolk.avif" alt="Kolkata" class="cityimg" />
               <div class="cityTrans">Kolkata</div>
             </div>
           </li>
           <li>
             <div class="city_box">
-              <img src="./Images/koch.avif" alt="Kochi" class="cityimg" />
+              <img src="../Images/koch.avif" alt="Kochi" class="cityimg" />
               <div class="cityTrans">Kochi</div>
             </div>
           </li>
@@ -388,7 +388,7 @@ export function getNavbar(){
 
     <div class="below_bar">
       <a href="index.html">
-      <img src="./Images/logo.png" alt="" class="below_bar_img">
+      <img src="../Images/logo.png" alt="" class="below_bar_img">
     </a>
     <a href="./HTML/gift.html">
       <h1>Live <br> <span>Events</span></h1>
