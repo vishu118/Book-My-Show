@@ -105,7 +105,7 @@ function createMovieElement(movie) {
   movieEl.classList.add("movies");
   movieEl.innerHTML = `
     <div class="parent_movie"> 
-    <a href="./HTML/movieExpanded.html?id=${id}"><img src="${
+    <a href="./HTML/Movie_extended.html?id=${id}"><img src="${
     img_url + poster_path
   }" alt="" /></a>
     <div class="like_vote">
@@ -147,7 +147,7 @@ function showMovies(movies) {
     movieEl.classList.add("movies");
     movieEl.innerHTML = `
                  <div class="parent_movie">
-                 <a href="./HTML/movieExpanded.html?id=${id}"><img src="${
+                 <a href="./HTML/Movie_extended.html?id=${id}"><img src="${
       img_url + poster_path
     }" alt="" /></a>
                  <div class="like_vote">
@@ -264,7 +264,7 @@ function showTrendingMovies(movies) {
     const trendingMoviesEl = document.createElement("div");
     trendingMoviesEl.classList.add("trending_movies");
     trendingMoviesEl.innerHTML = `
-          <a href="./HTML/movieExpanded.html?id=${id}">
+          <a href="./HTML/Movie_extended.html?id=${id}">
               <p>${title}</p>
           </a>
         
