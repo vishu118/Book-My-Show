@@ -29,7 +29,7 @@ const bollywoodMoviesContainerEl = document.querySelector(
 
 // variable declaration For the resuseablility while hitting Api End Points=======================
 
-const auth = "57b428c0e112b579eb26e2f43ff08b0f";
+const auth = "2e302e23979f60ced7d629e4168670c9";
 const Api_key = "api_key=2e302e23979f60ced7d629e4168670c9";
 const Base_Url = "https://api.themoviedb.org/3/";
 const img_url = "https://image.tmdb.org/t/p/w500"; //------This is the Base URL For Images-------//
