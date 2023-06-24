@@ -6,7 +6,7 @@ export function getNavbar(){
         <div class="left_nav">
           <a href="#">
             <img
-              src="./IMAGES/bookmyshow-logo-31BC3C7354-seeklogo.com (2).jpg"
+              src="../IMAGES/bookmyshow-logo-31BC3C7354-seeklogo.com (2).jpg"
               alt=""
               class="left_nav_logo"
             />
