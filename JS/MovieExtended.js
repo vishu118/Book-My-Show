@@ -29,3 +29,5 @@ const renderMovieDetails = async()=>{
 renderMovieDetails()
 
 
+
+
