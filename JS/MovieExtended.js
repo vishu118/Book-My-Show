@@ -21,13 +21,15 @@ const Api_key = "api_key=2e302e23979f60ced7d629e4168670c9";
 const Base_Url = "https://api.themoviedb.org/3/";
 const img_url = "https://image.tmdb.org/t/p/w500";
 const Api_url = Base_Url + "/trending/movie/week?" + Api_key;
-let moviesSimilar = Base_Url + "discover/movie?" + Api_key+"&sort_by=popularity.desc&page=2&primary_release_year=2022&with_original_language=hi";
+// let moviesSimilar = Base_Url + "discover/movie?" + Api_key+"&sort_by=popularity.desc&page=2&primary_release_year=2022&with_original_language=hi";
 let moviesYouMayLikeUrl = `${Base_Url}movie/${id}/similar?${Api_key}`
+let getCastDetailsUrl = `${Base_Url}movie/${id}/credits?${Api_key}&language=en-US`
+let MovieDetailUrl = `${Base_Url}movie/${id}?${Api_key}`
 
 
 
 const renderMovieDetails = async()=>{
-  const res = await fetch(`${Base_Url}movie/${id}?${Api_key}`); //========= Fetching Specific Movie Details using id
+  const res = await fetch(MovieDetailUrl); //========= Fetching Specific Movie Details using id
   const Data = await res.json();
    const {original_title, backdrop_path, vote_count, vote_average, runtime, release_date, overview, poster_path, genres,spoken_languages,production_companies,adult} = Data;    // destrucuturing data of specific movie using id;
    console.log(Data)
@@ -94,7 +96,62 @@ const template = `
 
 movieContainerEl.innerHTML = template;
 renderMoviesYouLike()
+renderCast()
+renderCrew()
 
+}
+
+
+// Getting details of cast and crew
+
+
+const renderCast = async () => {
+  const res = await fetch(getCastDetailsUrl)
+  const cast = res.json()
+  let casts = cast.cast.slice(1, 7)
+
+  const castHead=document.createElement("div");
+  castHead.innerHTML = `<h1 class="cast_name">Cast</h1>`;
+  castHead.classList.add("cast_section");
+  const castElCon = document.createElement("div");
+  castElCon.classList.add("cast_container");
+  castHead.appendChild(castElCon);
+  casts.forEach((c) => {
+      castElCon.innerHTML += `
+      <div class="cast_detail">
+        <img src="${img_url}/${c.profile_path}" alt=""/>
+        <p>${c.name}</p>
+      </div>
+        `
+      movieContainerEl.appendChild(castHead);
+  })
+}
+
+
+
+//---------------------------------Function That Renders the Crew-------------------------------------------
+
+const renderCrew = async () => {
+  const res = await fetch(getCastDetailsUrl); // End Point That Fetch the Crew
+  const crew = await res.json()
+  let crews = crew.crew.slice(1, 5)//We are Getting a Buch Of Crews So We Sliced it Out 🐱‍👤
+  
+  const crewHead=document.createElement("div");
+  crewHead.innerHTML = `<h1 class="crew_name">Crew</h1>`;
+  crewHead.classList.add("crew_section");
+  const crewElCon = document.createElement("div");
+  crewElCon.classList.add("crew_container");
+  crewHead.appendChild(crewElCon);
+  crews.forEach((c) => {
+      crewElCon.innerHTML += `
+      <div class="crew_detail">
+        <img src="${img_url}/${c.profile_path ? c.profile_path : "/5QlzL72Du5zVs1E27pQ0OlFLImI.jpg"}" alt=""/>
+        <p>${c.name}</p>
+      </div>
+       `
+      //I have used Ternary Operator to get image because Some times We are getting Null through Api😕
+      movieContainerEl.appendChild(crewHead);
+  })
 }
 
 
@@ -104,7 +161,7 @@ renderMoviesYouLike()
 const renderMoviesYouLike = async ()=>{
   const res = await fetch(moviesYouMayLikeUrl)
   const movies = await res.json();
-  const mayLikeMovies = movies.results.slice(2,10);
+   const mayLikeMovies = movies.results.slice(2,10);
 
   mayLikeMovies.forEach((movie) => {
      
