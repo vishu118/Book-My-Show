@@ -93,8 +93,37 @@ const template = `
 `
 
 movieContainerEl.innerHTML = template;
-
+renderMoviesYouLike()
 
 }
-renderMovieDetails()
 
+
+
+// MOVIE YOU MAY LIKE SECTION ==============================================================================
+
+const renderMoviesYouLike = async ()=>{
+  const res = await fetch(moviesYouMayLikeUrl)
+  const movies = await res.json();
+  const mayLikeMovies = movies.results.slice(2,10);
+
+  mayLikeMovies.forEach((movie) => {
+     
+    const {id, title,release_date,popularity,vote_average,original_language,poster_path } = movie;
+    const mayLikeCon = document.createElement("div")
+    mayLikeCon.classList.add("moviesYouMayLike")
+    mayLikeCon.innerHTML = `
+             <a href="./movieExpanded.html?id=${id}">   
+                 <img src="${img_url + poster_path}" alt="" />
+             </a>
+             <p>${title}</p>
+           
+  `
+  {/* <p>Likes-${popularity}</p>
+             <p>rating-${vote_average}</p> */}
+  moviesYouMayLikeContainerEl.appendChild(mayLikeCon);
+  })
+  
+  
+}
+
+renderMovieDetails()
