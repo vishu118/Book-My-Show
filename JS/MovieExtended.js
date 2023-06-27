@@ -49,50 +49,50 @@ const renderMovieDetails = async()=>{
 
 let gens = "";
 genres.forEach((g)=>{
-  gens += g.names + ","
+  gens += g.name + ","
 })
 
 
 
 
 const template = `
-<div class="main_container" style= " background-image: linear-gradient(90deg, rgb(26, 26, 26) 24.97%, rgb(26, 26, 26) 38.3%, rgba(26, 26, 26, 0.04) 97.47%, rgb(26, 26, 26) 100%),url(${img_url}/${backdrop_path});background-repeat:no-repeat;background-size: cover;">
-<div class="wrapper-box">
-<img src = "${img_url}/${poster_path}" alt="" class="poster_img" width="100%" /> 
-
-<div class="movie_detail_banner">
-        <h1 class="movie_title">${original_title}</h1>
-        <div class="movie_rating_voting"> 
-        <h3><i class="fa-solid fa-star"></i> ${Number((vote_average).toFixed(1))}/10</h3> 
-        <h5>${(vote_count)/1000}k votes</h5>
+    <div class="main_container" style= " background-image: linear-gradient(90deg, rgb(26, 26, 26) 24.97%, rgb(26, 26, 26) 38.3%, rgba(26, 26, 26, 0.04) 97.47%, rgb(26, 26, 26) 100%),url(${img_url}/${backdrop_path});background-repeat:no-repeat;background-size: cover;">
+    <div class="wrapper-box">
+    <img src = "${img_url}/${poster_path}" alt="" class="poster_img" width="100%" /> 
+    
+    <div class="movie_detail_banner">
+            <h1 class="movie_title">${original_title}</h1>
+            <div class="movie_rating_voting"> 
+            <h3><i class="fa-solid fa-star"></i> ${Number((vote_average).toFixed(1))}/10</h3> 
+            <h5>${(vote_count)/1000}k votes</h5>
+            </div>
+            <div class="your_rating">
+            <div class="rating_text">
+            <h3>Add your rating & review</h3>
+            <p>Your ratings matter</p>
+            </div>
+            <button class="rate_btn">Rate now</button>
+            </div>
+            <div class="screens">${productions.slice(0,-2)}</div>
+            <div class="languages">${languages.slice(0,-2)}</div>
+            <div class="other_detail"><span>${Math.floor(runtime/60)}hr ${runtime%60}mins</span> <span>. </span> <span>${gens.slice(0,-1)}</span><span>. </span> <span>${adult?"U/A":"U"}</span> <span>. </span> <span>${release_date}</span></div>
+            <a href="../HTML/theatre.html?id=${id}"><button class="tickt_btn" style="cursor:pointer"> Book Tickets</button></a>
         </div>
-        <div class="your_rating">
-        <div class="rating_text">
-        <h3>Add your rating & review</h3>
-        <p>Your ratings matter</p>
+     </div>
+     </div>
+      <div class="about_movie">
+           <h1>About the movie</h1>
+           <p> ${overview} </p>
+      </div>
+    
+    <div class="offers">
+        <h1>Applicable offers</h1>
+        <div class="limited_offer">
+          <h2>WATCH MOVIES ONLINE FOR FREE</h2>
+          <p>Limited Period Offer</p>
         </div>
-        <button class="rate_btn">Rate now</button>
-        </div>
-        <div class="screens">${productions.slice(0,-2)}</div>
-        <div class="languages">${languages.slice(0,-2)}</div>
-        <div class="other_detail"><span>${Math.floor(runtime/60)}hr ${runtime%60}mins</span> <span>. </span> <span>${gens.slice(0,-1)}</span><span>. </span> <span>${adult?"U/A":"U"}</span> <span>. </span> <span>${release_date}</span></div>
-        <a href="../HTML/theatre.html?id=${id}"><button class="tickt_btn" style="cursor:pointer"> Book Tickets</button></a>
     </div>
- </div>
- </div>
-  <div class="about_movie">
-       <h1>About the movie</h1>
-       <p> ${overview} </p>
-  </div>
-
-<div class="offers">
-    <h1>Applicable offers</h1>
-    <div class="limited_offer">
-      <h2>WATCH MOVIES ONLINE FOR FREE</h2>
-      <p>Limited Period Offer</p>
-    </div>
-</div>
-`
+    `
 
 movieContainerEl.innerHTML = template;
 renderMoviesYouLike()
