@@ -23,13 +23,12 @@ const img_url = "https://image.tmdb.org/t/p/w500";
 const Api_url = Base_Url + "/trending/movie/week?" + Api_key;
 // let moviesSimilar = Base_Url + "discover/movie?" + Api_key+"&sort_by=popularity.desc&page=2&primary_release_year=2022&with_original_language=hi";
 let moviesYouMayLikeUrl = `${Base_Url}movie/${id}/similar?${Api_key}`
-let getCastDetailsUrl = `${Base_Url}movie/${id}/credits?${Api_key}&language=en-US`
-let MovieDetailUrl = `${Base_Url}movie/${id}?${Api_key}`
+let getCastAndCrewUrl = `${Base_Url}movie/${id}/credits?${Api_key}&language=en-US`
 
 
 
 const renderMovieDetails = async()=>{
-  const res = await fetch(MovieDetailUrl); //========= Fetching Specific Movie Details using id
+  const res = await fetch(`${Base_Url}movie/${id}?${Api_key}`); //========= Fetching Specific Movie Details using id
   const Data = await res.json();
    const {original_title, backdrop_path, vote_count, vote_average, runtime, release_date, overview, poster_path, genres,spoken_languages,production_companies,adult} = Data;    // destrucuturing data of specific movie using id;
    console.log(Data)
@@ -106,10 +105,10 @@ renderCrew()
 
 
 const renderCast = async () => {
-  const res = await fetch(getCastDetailsUrl)
-  const cast = res.json()
+  const res = await fetch(getCastAndCrewUrl); // End Point That Fetch the Cast
+  const cast = await res.json()
   let casts = cast.cast.slice(1, 7)
-
+  
   const castHead=document.createElement("div");
   castHead.innerHTML = `<h1 class="cast_name">Cast</h1>`;
   castHead.classList.add("cast_section");
@@ -128,11 +127,10 @@ const renderCast = async () => {
 }
 
 
-
 //---------------------------------Function That Renders the Crew-------------------------------------------
 
 const renderCrew = async () => {
-  const res = await fetch(getCastDetailsUrl); // End Point That Fetch the Crew
+  const res = await fetch(getCastAndCrewUrl); // End Point That Fetch the Crew
   const crew = await res.json()
   let crews = crew.crew.slice(1, 5)//We are Getting a Buch Of Crews So We Sliced it Out 🐱‍👤
   
