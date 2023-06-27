@@ -1,5 +1,6 @@
 //Retrieving the id from url and storing in a variable called id
 const id = new URLSearchParams(window.location.search).get("id");
+console.log(id)
 //-----------------------------------------------------------------------------
 import { getNavbar } from '../MODULES/navbarModule.js';
 import { getFooter2 } from '../MODULES/footer2Module.js';
