@@ -107,7 +107,8 @@ renderCrew()
 const renderCast = async () => {
   const res = await fetch(getCastAndCrewUrl); // End Point That Fetch the Cast
   const cast = await res.json()
-  let casts = cast.cast.slice(1, 7)
+  let casts = cast.cast.slice(0, 6)
+
   
   const castHead=document.createElement("div");
   castHead.innerHTML = `<h1 class="cast_name">Cast</h1>`;
@@ -132,8 +133,8 @@ const renderCast = async () => {
 const renderCrew = async () => {
   const res = await fetch(getCastAndCrewUrl); // End Point That Fetch the Crew
   const crew = await res.json()
-  let crews = crew.crew.slice(1, 5)//We are Getting a Buch Of Crews So We Sliced it Out 🐱‍👤
-  
+  console.log(crew)
+  let crews = crew.crew.slice(0, 6)  //We are Getting a Buch Of Crews So We Sliced it Out 🐱‍👤
   const crewHead=document.createElement("div");
   crewHead.innerHTML = `<h1 class="crew_name">Crew</h1>`;
   crewHead.classList.add("crew_section");
