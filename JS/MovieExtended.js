@@ -24,10 +24,27 @@ const renderMovieDetails = async()=>{
   const Data = await res.json();
    const {original_title, backdrop_path, vote_count, vote_average, runtime, release_date, overview, poster_path, genres,spoken_languages,production_companies,adult} = Data;    // destrucuturing data of specific movie using id;
    console.log(Data)
-}
+   console.log(production_companies)
+
+   let productions= ""
+   production_companies.forEach((p)=>{
+     productions+=p.name+","+" "
+   })
+
+   let languages = ""
+   spoken_languages.forEach((l)=>{
+     languages+=l.english_name+","+" "
+   })
+     
+  
+
+let gens = "";
+generes.forEach((g)=>{
+  gens += g.names + ","
+})
 
 renderMovieDetails()
 
 
-
+  }
 
