@@ -217,7 +217,7 @@ const renderReviews = async () => {
 const renderMoviesYouLike = async ()=>{
   const res = await fetch(moviesYouMayLikeUrl)
   const movies = await res.json();
-   const mayLikeMovies = movies.results.slice(2,10);
+   const mayLikeMovies = movies.results;
 
   mayLikeMovies.forEach((movie) => {
      
@@ -225,7 +225,7 @@ const renderMoviesYouLike = async ()=>{
     const mayLikeCon = document.createElement("div")
     mayLikeCon.classList.add("moviesYouMayLike")
     mayLikeCon.innerHTML = `
-             <a href="./movieExpanded.html?id=${id}">   
+             <a href="../HTML/Movie_extended.html?id=${id}">   
                  <img src="${img_url + poster_path}" alt="" />
              </a>
              <p>${title}</p>
@@ -239,4 +239,4 @@ const renderMoviesYouLike = async ()=>{
   
 }
 
-renderMovieDetails()
+window.addEventListener("DOMContentLoaded", () => renderMovieDetails())
