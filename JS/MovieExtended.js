@@ -177,7 +177,37 @@ const renderReviews = async () => {
   <div class="review_btn_box">#GreatActing <span>22364</span></div>
   </div> 
   `;
- 
+  reviewHead.classList.add("review_section");
+  const reviewCon = document.createElement("div");
+  reviewCon.classList.add("review_container");
+  reviewHead.appendChild(reviewCon);
+  // console.log(reviews)
+  reviews.forEach((rev) => {
+      let content = rev.content.slice(0, 200);// The Review Content Was So Big So Sliced to 600 Words Including Spaces and punctuations..It will be Nice To change it While Designing
+      let imgurl = rev.author_details.avatar_path;
+      const rating = rev.author_details.rating;
+      reviewCon.innerHTML += `
+        <div class="reviews">
+        <div class="frst_row_review">
+        <img src="${img_url}/${imgurl}" alt=""/>
+         <p class="author_name">Author:${rev.author}</p>
+         <p><i class="fa-solid fa-star fa-star-review"></i>${rating}/10</p>
+         </div>
+
+         <p class="review_content">${content}</p>
+
+         <div class = "last_row_review">
+         <div class = "review_like">
+         <div> <i class = "fa-regular fa-thumbs-up"></i> <span> 2.1k </span></div> 
+         <div><i class = "fa-regular fa-thumbs-down"></i></div>
+         </div>
+         <div class = "review_share">
+         <i class="fa-solid fa-share-nodes"></i>
+         <h2>created at:${rev.created_at}</h2>
+         </div>
+         </div>
+        `
+      movieContainerEl.appendChild(reviewHead);
   })
 }
 
