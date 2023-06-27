@@ -24,6 +24,7 @@ const Api_url = Base_Url + "/trending/movie/week?" + Api_key;
 // let moviesSimilar = Base_Url + "discover/movie?" + Api_key+"&sort_by=popularity.desc&page=2&primary_release_year=2022&with_original_language=hi";
 let moviesYouMayLikeUrl = `${Base_Url}movie/${id}/similar?${Api_key}`
 let getCastAndCrewUrl = `${Base_Url}movie/${id}/credits?${Api_key}&language=en-US`
+let getReviewsUrl = `${Base_Url}movie/${id}/reviews?${Api_key}&language=en-US`
 
 
 
@@ -97,6 +98,7 @@ movieContainerEl.innerHTML = template;
 renderMoviesYouLike()
 renderCast()
 renderCrew()
+renderReviews()
 
 }
 
@@ -134,7 +136,7 @@ const renderCrew = async () => {
   const res = await fetch(getCastAndCrewUrl); // End Point That Fetch the Crew
   const crew = await res.json()
   console.log(crew)
-  let crews = crew.crew.slice(0, 6)  //We are Getting a Buch Of Crews So We Sliced it Out 🐱‍👤
+  let crews = crew.crew.slice(0, 6)  //We are Getting a Bunch Of Crews So We Sliced it Out 🐱‍👤
   const crewHead=document.createElement("div");
   crewHead.innerHTML = `<h1 class="crew_name">Crew</h1>`;
   crewHead.classList.add("crew_section");
@@ -148,11 +150,36 @@ const renderCrew = async () => {
         <p>${c.name}</p>
       </div>
        `
-      //I have used Ternary Operator to get image because Some times We are getting Null through Api😕
+   
       movieContainerEl.appendChild(crewHead);
   })
 }
 
+// Function to get Reviews===========================================================================
+
+
+const renderReviews = async () => {
+  const res = await fetch(`${Base_Url}movie/${id}/reviews?${Api_key}&language=en-US`); // End Point That Fetch the Crew
+  const review = await res.json();
+  console.log(review.results)
+  const reviews = review.results.slice(0,2);
+  
+  const reviewHead = document.createElement("div");
+  reviewHead.innerHTML = `
+  <div class="review_upPart">
+  <h1 class="rivew_name">Top reviews</h1>
+  <p> summary of the reviews </p>
+  <div class="review_btn">
+  <div class="review_btn_box">#superDirection <span>27419</span></div>
+  <div class="review_btn_box">#Blockbuster <span>22183</span></div>
+  <div class="review_btn_box">#Wellmade <span>20913</span></div>
+  <div class="review_btn_box">#Unbelievable <span>20264</span></div>
+  <div class="review_btn_box">#GreatActing <span>22364</span></div>
+  </div> 
+  `;
+ 
+  })
+}
 
 
 // MOVIE YOU MAY LIKE SECTION ==============================================================================
