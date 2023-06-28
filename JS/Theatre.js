@@ -165,6 +165,34 @@ dates.forEach(date => {
 }
 
 getLiveEvents()
+
+
+
+// =============================================TO DISPLAY TERMS AND CONDITION MODAL ==================================================================
+
+const cut = document.getElementById("cut");
+const termsandconditions = document.querySelector(".termsandconditions_body");
+const cancelTermsAndConditions = document.querySelector(".cancel");
+const accept = document.querySelector(".accept");
+const time = document.querySelector(".movie_timing");
+
+bookingCont.addEventListener("click", (e)=>{
+if(e.target.classList.contains('booking_timing')){
+  currentTheatreName = e.target.classList[1];
+  termsandconditions.style.display = "block";
+}
+})
+
+
+
+
+
+
+
+
+
+
+// =============================================TO DISPLAY TERMS AND CONDITION MODAL ==================================================================
 window.addEventListener("DOMContentLoaded", () => renderDetails());
 
 
