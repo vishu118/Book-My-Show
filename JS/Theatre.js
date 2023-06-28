@@ -97,7 +97,7 @@ theatre.map((ele)=>{
  timeslots.map((ele)=>{
   template1 += `
   <div class="timing">
-      <span class="booking_timing">${ele}</span>
+      <span class="booking_timing ${ele.id}">${ele}</span>
       <p class="booking_flexibility"><span> <i class="fa-solid fa-circle"></i></span>Cancellation Available</p>
   </div>
   `;
@@ -106,7 +106,7 @@ theatre.map((ele)=>{
  `<div class="booking_location container">
  <div class="heart"><i class="fa-regular fa-heart"></i></div>
  <div>
-   <p class="theatre_name">${ele.theatreName}</p>
+   <p class="theatre_name ${ele.theatreName}">${ele.theatreName}</p>
    <div>
      <span class="mTicket" ><i class="fa-solid fa-mobile-retro"></i> M-Ticket</span>
      <span class="foodbevrages"><i class="fa-solid fa-burger"></i>Food And Beverages</span>
@@ -130,6 +130,38 @@ theatre.map((ele)=>{
 
 })
 bookingCont.innerHTML += template2;
+
+const currentDate = new Date();
+const dates = [];
+
+for (let i = 0; i < 5; i++) {
+  const nextDate = new Date(currentDate);
+  nextDate.setDate(currentDate.getDate() + i + 1); // Add i + 1 to skip the current date
+  dates.push(nextDate);
+}
+let dateTemplate = `<i class="fa-solid fa-less-than"></i>`;
+
+dates.forEach(date => {
+  const day = date.toLocaleDateString('en-US', { weekday: 'short' }).toLocaleUpperCase();
+  let month = date.toLocaleString("en-us", { month: "long" }).toLocaleUpperCase();
+  const dateNumber = date.getDate();
+
+  dateTemplate += `
+  <div class="booking_day" data-date="${date.toISOString()}">
+  <p class="day">${day}</p>
+  <p class="date">${dateNumber}</p>
+  <p class="month">${month}</p>
+    
+   
+  </div>
+`;
+  
+});
+
+  dateTemplate += `<i class="fa-solid fa-greater-than"></i>`;
+  datesContainerEl.innerHTML = dateTemplate;
+
+
 }
 
 getLiveEvents()
