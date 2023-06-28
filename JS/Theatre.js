@@ -73,10 +73,19 @@ const renderDetails = async () => {
 
 
     <div class="direction">
-        <p><span>Home</span>&#8594<span>Movies in</span>&#8594<span>${original_title}</span></p>
+        <p><span>Home</span>&#8594<span>Movies in</span>&#8594<span class = "movie_name">${original_title}</span></p>
       </div>
     `;
   direction.innerHTML = template3;
 };
 
 window.addEventListener("DOMContentLoaded", () => renderDetails());
+
+
+
+const fetchjson = async ()=>{
+ const res = await fetch("../JSON/theatre.json")
+ console.log(res)
+ const data = await res.json()
+ console.log(data)
+}
