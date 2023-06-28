@@ -279,6 +279,7 @@
   margin-right: 1em;
   display: flex;
   flex-wrap: wrap;
+  cursor: pointer;
 }
 
 .booking_timing:hover {
