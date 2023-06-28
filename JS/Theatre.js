@@ -175,6 +175,7 @@ const termsandconditions = document.querySelector(".termsandconditions_body");
 const cancelTermsAndConditions = document.querySelector(".cancel");
 const accept = document.querySelector(".accept");
 const time = document.querySelector(".movie_timing");
+const chooseseatModal = document.querySelector(".chooseseats_body");
 
 bookingCont.addEventListener("click", (e)=>{
 if(e.target.classList.contains('booking_timing')){
@@ -196,7 +197,7 @@ cancelTermsAndConditions.addEventListener("click", () => {
 
 accept.addEventListener("click", () => {
   termsandconditions.style.display = "none";
-  // chooseseatModal.style.display = "block";
+  chooseseatModal.style.display = "block";
 });
 
 
@@ -205,6 +206,21 @@ accept.addEventListener("click", () => {
 
 
 // =============================================TO DISPLAY TERMS AND CONDITION MODAL ==================================================================
+
+
+
+
+// ==============================================TO DISPLAY SEATING MODAL ===============================================================================
+
+
+
+
+
+
+// ==============================================TO DISPLAY SEATING MODAL ===============================================================================
+
+
+
 window.addEventListener("DOMContentLoaded", () => renderDetails());
 
 
