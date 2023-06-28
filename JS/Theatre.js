@@ -79,13 +79,61 @@ const renderDetails = async () => {
   direction.innerHTML = template3;
 };
 
+
+
+const getLiveEvents = async ()=>{
+let url = "../JSON/theatre.json"
+const res = await fetch(url);
+const data = await res.json();
+let theatre = data.theatres;
+// let theatreTime = data.theatres.Time;
+let template2 = ""
+
+
+// TEMPLATE FOR TIMEING====================================================================
+theatre.map((ele)=>{
+  let template1 = ""
+  let timeslots = ele.Time;
+ timeslots.map((ele)=>{
+  template1 += `
+  <div class="timing">
+      <span class="booking_timing">${ele}</span>
+      <p class="booking_flexibility"><span> <i class="fa-solid fa-circle"></i></span>Cancellation Available</p>
+  </div>
+  `;
+ })
+ template2 += 
+ `<div class="booking_location container">
+ <div class="heart"><i class="fa-regular fa-heart"></i></div>
+ <div>
+   <p class="theatre_name">${ele.theatreName}</p>
+   <div>
+     <span class="mTicket" ><i class="fa-solid fa-mobile-retro"></i> M-Ticket</span>
+     <span class="foodbevrages"><i class="fa-solid fa-burger"></i>Food And Beverages</span>
+   </div>
+   
+ </div>
+
+ <span class="info">
+   <i class="fa-solid fa-circle-info"></i>
+   <span>INFO</span>
+ </span>
+
+    <div class="movie_timing">
+     ${template1}
+    </div>
+
+
+
+  </div>
+   `;
+
+})
+bookingCont.innerHTML += template2;
+}
+
+getLiveEvents()
 window.addEventListener("DOMContentLoaded", () => renderDetails());
 
 
 
-const fetchjson = async ()=>{
- const res = await fetch("../JSON/theatre.json")
- console.log(res)
- const data = await res.json()
- console.log(data)
-}
