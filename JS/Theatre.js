@@ -216,7 +216,7 @@ let count = 0;
 
 
 
-chooseseats.addEventListener("mouseover", (e) => {
+chooseseats.addEventListener("click", (e) => {
   // console.log(e.target)
   if (e.target.innerText == "1") {
     vechile.src = "../IMAGES/bycycle.png";
@@ -234,6 +234,24 @@ chooseseats.addEventListener("mouseover", (e) => {
 });
 
 
+const seatArr = [];
+
+const handleSeat = (e)=>{
+  if(e.target.classList.contains('seats')){
+    if(seatArr.length>0){
+      let selectedSeat = seatArr.shift();
+      selectedSeat.classList.remove('seat_selected')
+    }
+    seatArr.push(e.target)
+
+  }
+
+  seatArr.forEach((ele)=>{
+    ele.classList.add('seat_selected')
+  })
+}
+
+chooseseats.addEventListener('click',handleSeat)
 
 
 // ==============================================TO DISPLAY SEATING MODAL ===============================================================================
