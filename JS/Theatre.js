@@ -184,8 +184,20 @@ if(e.target.classList.contains('booking_timing')){
 })
 
 
+cut.addEventListener("click", () => {
+  termsandconditions.style.display = "none";
+});
 
 
+cancelTermsAndConditions.addEventListener("click", () => {
+  termsandconditions.style.display = "none";
+});
+
+
+accept.addEventListener("click", () => {
+  termsandconditions.style.display = "none";
+  // chooseseatModal.style.display = "block";
+});
 
 
 

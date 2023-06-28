@@ -266,7 +266,9 @@
   margin-top: 1em;
   padding-left: 2em;
 }
-
+#cut{
+  cursor: pointer;
+}
 .timing i {
   color: #ffa426;
 }
