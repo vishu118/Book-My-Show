@@ -208,6 +208,47 @@ accept.addEventListener("click", () => {
 // =============================================TO DISPLAY TERMS AND CONDITION MODAL ==================================================================
 
 
+let seat = document.getElementById("one");
+const seats = document.querySelectorAll(".seats");
+const vechile = document.getElementById("vechile");
+let chooseseats = document.querySelector(".chooseseats");
+let count = 0;
+
+
+
+chooseseats.addEventListener("mouseover", (e) => {
+  // console.log(e.target)
+  if (e.target.innerText == "1") {
+    vechile.src = "../IMAGES/bycycle.png";
+  } else if (e.target.innerText == "2") {
+    vechile.src = "../IMAGES/scooter.png";
+  } else if (e.target.innerText == "3") {
+    vechile.src = "../IMAGES/auto.png";
+  } else if (e.target.innerText == "4") {
+    vechile.src = "../IMAGES/minicar.png";
+  } else if (e.target.innerText == "5") {
+    vechile.src = "../IMAGES/car.png";
+  } else {
+    vechile.src = "../IMAGES/bus.png";
+  }
+});
+
+
+seat.addEventListener("click",(e)=>{
+  if (e.target.innerText == "1") {
+    vechile.src = "../IMAGES/bycycle.png";
+  } else if (e.target.innerText == "2") {
+    vechile.src = "../IMAGES/scooter.png";
+  } else if (e.target.innerText == "3") {
+    vechile.src = "../IMAGES/auto.png";
+  } else if (e.target.innerText == "4") {
+    vechile.src = "../IMAGES/minicar.png";
+  } else if (e.target.innerText == "5") {
+    vechile.src = "../IMAGES/car.png";
+  } else {
+    vechile.src = "../IMAGES/bus.png";
+  }
+})
 
 
 // ==============================================TO DISPLAY SEATING MODAL ===============================================================================

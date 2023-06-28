@@ -669,6 +669,11 @@
   color: #f2f2f2;
 }
 
+.seat_selected{
+  background-color: rgb(241, 72, 72);
+  color: #f2f2f2; 
+}
+
 .seat_status {
   display: flex;
   text-align: center;
