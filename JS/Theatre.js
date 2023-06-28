@@ -234,21 +234,6 @@ chooseseats.addEventListener("mouseover", (e) => {
 });
 
 
-seat.addEventListener("click",(e)=>{
-  if (e.target.innerText == "1") {
-    vechile.src = "../IMAGES/bycycle.png";
-  } else if (e.target.innerText == "2") {
-    vechile.src = "../IMAGES/scooter.png";
-  } else if (e.target.innerText == "3") {
-    vechile.src = "../IMAGES/auto.png";
-  } else if (e.target.innerText == "4") {
-    vechile.src = "../IMAGES/minicar.png";
-  } else if (e.target.innerText == "5") {
-    vechile.src = "../IMAGES/car.png";
-  } else {
-    vechile.src = "../IMAGES/bus.png";
-  }
-})
 
 
 // ==============================================TO DISPLAY SEATING MODAL ===============================================================================
