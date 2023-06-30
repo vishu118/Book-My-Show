@@ -166,7 +166,7 @@ const time = document.querySelector(".movie_timing");
 const chooseseatModal = document.querySelector(".chooseseats_body");
 const theatrelocation = document.querySelector(".theatre_location");
 
-theatrelocation.addEventListener("click", (e) => {
+bookingCont.addEventListener("click", (e) => {
   if (e.target.classList.contains("booking_timing")) {
     currentTheatreName = e.target.classList[1];
     termsandconditions.style.display = "block";
@@ -246,7 +246,7 @@ seatsToBookEl.addEventListener("click", (e) => {
 });
 
 seatToChoose_button_EL.addEventListener("click", function () {
-  const url = `../HTML/seat.htmlHTML?id=${id}&theatreName=${currentTheatreName}`;
+  const url = `../HTML/seat.html?id=${id}&theatreName=${currentTheatreName}`;
 
   // Navigate to the next page
   window.location.href = url;
