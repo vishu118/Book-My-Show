@@ -2,7 +2,6 @@
 
 const id = new URLSearchParams(window.location.search).get("id");
 
-
 // DECLERATION OF ALL THE VARIABLES REQ =========================================================================
 
 const bookingCont = document.querySelector(".theatre_location");
@@ -13,14 +12,11 @@ const direction = document.querySelector(".direction");
 let seatsToBookEl = document.querySelector(".seatstobook");
 const datesContainerEl = document.querySelector(".dates");
 
-
 // API FOR DIFFRENT END POINTS ============================================================================
 
 let Api_key = "api_key=2e302e23979f60ced7d629e4168670c9";
 let Base_Url = "https://api.themoviedb.org/3/";
 let getMovieDetails = `${Base_Url}movie/${id}?${Api_key}`;
-
-
 
 // FETCHING DATA ============================================================================================
 
@@ -30,10 +26,7 @@ const renderDetails = async () => {
   console.log(data);
   const { original_title, genres, spoken_languages, adult } = data;
 
-
-
-//  TEMPLATE FOR NAME AND GENRE================================================================================
-
+  //  TEMPLATE FOR NAME AND GENRE================================================================================
 
   const template = `
   <div class="booking_title">
@@ -52,9 +45,7 @@ const renderDetails = async () => {
 `;
   booking_head_el.innerHTML = template;
 
-
-//   TEMPLATE FOR MOVIE LANGUAGE ====================================================================================
-
+  //   TEMPLATE FOR MOVIE LANGUAGE ====================================================================================
 
   const template2 = `
     <div class="booking_filter">
@@ -65,9 +56,7 @@ const renderDetails = async () => {
 
   booking_filter_el.innerHTML = template2;
 
-
-
-//   TEMPLATE FOR MOVIE NAME IN BOTTOM========================================================================================
+  //   TEMPLATE FOR MOVIE NAME IN BOTTOM========================================================================================
 
   const template3 = `
 
@@ -79,31 +68,27 @@ const renderDetails = async () => {
   direction.innerHTML = template3;
 };
 
+const getLiveEvents = async () => {
+  let url = "../JSON/theatre.json";
+  const res = await fetch(url);
+  const data = await res.json();
+  let theatre = data.theatres;
+  // let theatreTime = data.theatres.Time;
+  let template2 = "";
 
-
-const getLiveEvents = async ()=>{
-let url = "../JSON/theatre.json"
-const res = await fetch(url);
-const data = await res.json();
-let theatre = data.theatres;
-// let theatreTime = data.theatres.Time;
-let template2 = ""
-
-
-// TEMPLATE FOR TIMEING====================================================================
-theatre.map((ele)=>{
-  let template1 = ""
-  let timeslots = ele.Time;
- timeslots.map((ele)=>{
-  template1 += `
+  // TEMPLATE FOR TIMEING====================================================================
+  theatre.map((ele) => {
+    let template1 = "";
+    let timeslots = ele.Time;
+    timeslots.map((ele) => {
+      template1 += `
   <div class="timing">
       <span class="booking_timing ${ele.id}">${ele}</span>
       <p class="booking_flexibility"><span> <i class="fa-solid fa-circle"></i></span>Cancellation Available</p>
   </div>
   `;
- })
- template2 += 
- `<div class="booking_location container">
+    });
+    template2 += `<div class="booking_location container">
  <div class="heart"><i class="fa-regular fa-heart"></i></div>
  <div>
    <p class="theatre_name ${ele.theatreName}">${ele.theatreName}</p>
@@ -127,26 +112,29 @@ theatre.map((ele)=>{
 
   </div>
    `;
+  });
+  bookingCont.innerHTML += template2;
 
-})
-bookingCont.innerHTML += template2;
+  const currentDate = new Date();
+  const dates = [];
 
-const currentDate = new Date();
-const dates = [];
+  for (let i = 0; i < 5; i++) {
+    const nextDate = new Date(currentDate);
+    nextDate.setDate(currentDate.getDate() + i + 1); // Add i + 1 to skip the current date
+    dates.push(nextDate);
+  }
+  let dateTemplate = `<i class="fa-solid fa-less-than"></i>`;
 
-for (let i = 0; i < 5; i++) {
-  const nextDate = new Date(currentDate);
-  nextDate.setDate(currentDate.getDate() + i + 1); // Add i + 1 to skip the current date
-  dates.push(nextDate);
-}
-let dateTemplate = `<i class="fa-solid fa-less-than"></i>`;
+  dates.forEach((date) => {
+    const day = date
+      .toLocaleDateString("en-US", { weekday: "short" })
+      .toLocaleUpperCase();
+    let month = date
+      .toLocaleString("en-us", { month: "long" })
+      .toLocaleUpperCase();
+    const dateNumber = date.getDate();
 
-dates.forEach(date => {
-  const day = date.toLocaleDateString('en-US', { weekday: 'short' }).toLocaleUpperCase();
-  let month = date.toLocaleString("en-us", { month: "long" }).toLocaleUpperCase();
-  const dateNumber = date.getDate();
-
-  dateTemplate += `
+    dateTemplate += `
   <div class="booking_day" data-date="${date.toISOString()}">
   <p class="day">${day}</p>
   <p class="date">${dateNumber}</p>
@@ -155,18 +143,13 @@ dates.forEach(date => {
    
   </div>
 `;
-  
-});
+  });
 
   dateTemplate += `<i class="fa-solid fa-greater-than"></i>`;
   datesContainerEl.innerHTML = dateTemplate;
+};
 
-
-}
-
-getLiveEvents()
-
-
+getLiveEvents();
 
 // =============================================TO DISPLAY TERMS AND CONDITION MODAL ==================================================================
 
@@ -177,44 +160,33 @@ const accept = document.querySelector(".accept");
 const time = document.querySelector(".movie_timing");
 const chooseseatModal = document.querySelector(".chooseseats_body");
 
-bookingCont.addEventListener("click", (e)=>{
-if(e.target.classList.contains('booking_timing')){
-  currentTheatreName = e.target.classList[1];
-  termsandconditions.style.display = "block";
-}
-})
-
+bookingCont.addEventListener("click", (e) => {
+  if (e.target.classList.contains("booking_timing")) {
+    currentTheatreName = e.target.classList[1];
+    termsandconditions.style.display = "block";
+  }
+});
 
 cut.addEventListener("click", () => {
   termsandconditions.style.display = "none";
 });
 
-
 cancelTermsAndConditions.addEventListener("click", () => {
   termsandconditions.style.display = "none";
 });
-
 
 accept.addEventListener("click", () => {
   termsandconditions.style.display = "none";
   chooseseatModal.style.display = "block";
 });
 
-
-
-
-
-
 // =============================================TO DISPLAY TERMS AND CONDITION MODAL ==================================================================
-
 
 let seat = document.getElementById("one");
 const seats = document.querySelectorAll(".seats");
 const vechile = document.getElementById("vechile");
 let chooseseats = document.querySelector(".chooseseats");
 let count = 0;
-
-
 
 chooseseats.addEventListener("click", (e) => {
   // console.log(e.target)
@@ -233,39 +205,39 @@ chooseseats.addEventListener("click", (e) => {
   }
 });
 
-
 const seatArr = [];
 
-const handleSeat = (e)=>{
-  if(e.target.classList.contains('seats')){
-    if(seatArr.length>0){
+const handleSeat = (e) => {
+  if (e.target.classList.contains("seats")) {
+    if (seatArr.length > 0) {
       let selectedSeat = seatArr.shift();
-      selectedSeat.classList.remove('seat_selected')
+      selectedSeat.classList.remove("seat_selected");
     }
-    seatArr.push(e.target)
-
+    seatArr.push(e.target);
   }
 
-  seatArr.forEach((ele)=>{
-    ele.classList.add('seat_selected')
-  })
-}
+  seatArr.forEach((ele) => {
+    ele.classList.add("seat_selected");
+  });
+};
 
-chooseseats.addEventListener('click',handleSeat)
+chooseseats.addEventListener("click", handleSeat);
 
+// ===========================================FOR SELECTING NUMBER OF SEATS ==================================================
 
-// ==============================================TO DISPLAY SEATING MODAL ===============================================================================
+const seatToChoose_button_EL = document.querySelector(".seatToChoose_button");
+seatsToBookEl.addEventListener("click", (e) => {
+  let numSeats = e.target.innerText;
+  sessionStorage.setItem("numSeats", numSeats);
+});
 
+seatToChoose_button_EL.addEventListener("click", function () {
+  const url = `../HTML/seat.html?id=${id}&theatreName=${currentTheatreName}`;
 
+  // Navigate to the next page
+  window.location.href = url;
+});
 
-
-
-
-// ==============================================TO DISPLAY SEATING MODAL ===============================================================================
-
-
+// ===========================================FOR SELECTING NUMBER OF SEATS ==================================================
 
 window.addEventListener("DOMContentLoaded", () => renderDetails());
-
-
-
