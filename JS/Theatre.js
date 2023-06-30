@@ -11,6 +11,7 @@ const booking_filter_el = document.querySelector(".booking_filter");
 const direction = document.querySelector(".direction");
 let seatsToBookEl = document.querySelector(".seatstobook");
 const datesContainerEl = document.querySelector(".dates");
+let currentTheatreName = '';
 
 // API FOR DIFFRENT END POINTS ============================================================================
 
@@ -115,6 +116,10 @@ const getLiveEvents = async () => {
   });
   bookingCont.innerHTML += template2;
 
+
+
+  
+
   const currentDate = new Date();
   const dates = [];
 
@@ -159,8 +164,9 @@ const cancelTermsAndConditions = document.querySelector(".cancel");
 const accept = document.querySelector(".accept");
 const time = document.querySelector(".movie_timing");
 const chooseseatModal = document.querySelector(".chooseseats_body");
+const theatrelocation = document.querySelector(".theatre_location");
 
-bookingCont.addEventListener("click", (e) => {
+theatrelocation.addEventListener("click", (e) => {
   if (e.target.classList.contains("booking_timing")) {
     currentTheatreName = e.target.classList[1];
     termsandconditions.style.display = "block";
@@ -179,6 +185,14 @@ accept.addEventListener("click", () => {
   termsandconditions.style.display = "none";
   chooseseatModal.style.display = "block";
 });
+
+
+
+
+
+
+
+
 
 // =============================================TO DISPLAY TERMS AND CONDITION MODAL ==================================================================
 
@@ -232,7 +246,7 @@ seatsToBookEl.addEventListener("click", (e) => {
 });
 
 seatToChoose_button_EL.addEventListener("click", function () {
-  const url = `../HTML/seat.html?id=${id}&theatreName=${currentTheatreName}`;
+  const url = `../HTML/seat.htmlHTML?id=${id}&theatreName=${currentTheatreName}`;
 
   // Navigate to the next page
   window.location.href = url;
