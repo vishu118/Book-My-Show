@@ -11,6 +11,7 @@ const booking_filter_el = document.querySelector(".booking_filter");
 const direction = document.querySelector(".direction");
 let seatsToBookEl = document.querySelector(".seatstobook");
 const datesContainerEl = document.querySelector(".dates");
+const booking_dayEl = document.querySelector(".booking_day");
 let currentTheatreName = '';
 
 // API FOR DIFFRENT END POINTS ============================================================================
@@ -157,6 +158,9 @@ const getLiveEvents = async () => {
 };
 
 getLiveEvents();
+
+
+
 
 // =============================================TO DISPLAY TERMS AND CONDITION MODAL ==================================================================
 

@@ -53,4 +53,49 @@ const renderDetails = async () => {
   dynamic_nav_el.innerHTML = template;
     
 };
+
+
+
+
+// ================================================SEATS DYNAMICALLY===========================================================================
+let platinum = document.getElementById("seats_platinum");
+let gold = document.getElementById("seats_gold");
+let silver = document.getElementById("seats_silver");
+let seatrow1 = Number(platinum.getAttribute('seatrow1'))
+let seatcol1 = Number(platinum.getAttribute('seatcol1'))
+let seatrow2 = Number(platinum.getAttribute('seatrow2'))
+let seatcol2 = Number(platinum.getAttribute('seatcol2'))
+let seatrow3 = Number(platinum.getAttribute('seatrow3'))
+let seatcol3 = Number(platinum.getAttribute('seatcol3'))
+
+
+
+for( let i = 0 ; i < seatrow1 ; i++ ){
+   platinum.innerHTML += `<div class='row' id='row1-${i}'><span class="light_grey_text">${String.fromCharCode(65 + i)} &nbsp; &nbsp; </span></div>&nbsp;`;
+   currentrow1 = document.getElementById(`row1-${i}`);
+   for (let j = 0; j < seatcol1; j++) {
+    currentrow1.innerHTML = currentrow1.innerHTML + `<div class='seat1 pointer' id="r-${i}-${j}">${j + 1}</div>`;
+  }
+}
+
+for (let i = 0; i < seatrow2; i++) {
+  gold.innerHTML = gold.innerHTML + `<div class='row' id='row2-${i}'><span class="light_grey_text">${String.fromCharCode(65 + i)} &nbsp; &nbsp;&nbsp; </span></div>&nbsp;`;
+  currentrow2 = document.getElementById(`row2-${i}`);
+  for (let j = 0; j < seatcol2; j++) {
+    currentrow2.innerHTML = currentrow2.innerHTML + `<div class='seat2 pointer' id="r-${i}-${j}">${j + 1}</div>`;
+  }
+}
+
+for (let i = 0; i < seatrow3; i++) {
+  silver.innerHTML = silver.innerHTML + `<div class='row' id='row3-${i}'><span class="light_grey_text">${String.fromCharCode(65 + i)} &nbsp; &nbsp; </span></div>&nbsp;`;
+  currentrow3 = document.getElementById(`row3-${i}`);
+  for (let j = 0; j < seatcol1; j++) {
+    currentrow3.innerHTML = currentrow3.innerHTML + `<div class='seat3 pointer' id="r-${i}-${j}">${j + 1}</div>`;
+  }
+}
+
+
+// ================================================SEATS DYNAMICALLY===========================================================================
+
+
 renderDetails()
