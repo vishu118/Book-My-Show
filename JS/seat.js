@@ -1,8 +1,24 @@
 
 const id = new URLSearchParams(window.location.search).get("id");
 const theatreName = new URLSearchParams(window.location.search).get("theatreName");
-console.log(theatreName)
+let platinum = document.getElementById("seats_platinum");
+let gold = document.getElementById("seats_gold");
+let silver = document.getElementById("seats_silver");
+let seatrow1 = Number(platinum.getAttribute('seatrow1'))
+let seatcol1 = Number(platinum.getAttribute('seatcol1'))
+let seatrow2 = Number(gold.getAttribute('seatrow2'))
+let seatcol2 = Number(gold.getAttribute('seatcol2'))
+let seatrow3 = Number(silver.getAttribute('seatrow3'))
+let seatcol3 = Number(silver.getAttribute('seatcol3'))
+
 const dynamic_nav_el = document.querySelector(".seat_nav")
+const seat_total_amountEl = document.getElementById("seats_total_amount")
+const close_pointer_el = document.querySelector(".seat_close_icon")
+const amoutShowButton = document.querySelector(".seat_total_amount");
+const amountShowAnchorEl = document.querySelector(".amount_show_anchor")
+const payment_btn = document.querySelector(".seat_type1")
+const backLogoEl = document.querySelector(".seat_cheveron")
+let currentrow1, currentrow2, currentrow3;
 
 
 let Api_key = "api_key=57b428c0e112b579eb26e2f43ff08b0f"
@@ -58,15 +74,7 @@ const renderDetails = async () => {
 
 
 // ================================================SEATS DYNAMICALLY===========================================================================
-let platinum = document.getElementById("seats_platinum");
-let gold = document.getElementById("seats_gold");
-let silver = document.getElementById("seats_silver");
-let seatrow1 = Number(platinum.getAttribute('seatrow1'))
-let seatcol1 = Number(platinum.getAttribute('seatcol1'))
-let seatrow2 = Number(gold.getAttribute('seatrow2'))
-let seatcol2 = Number(gold.getAttribute('seatcol2'))
-let seatrow3 = Number(silver.getAttribute('seatrow3'))
-let seatcol3 = Number(silver.getAttribute('seatcol3'))
+
 
 
 
@@ -98,5 +106,199 @@ for (let i = 0; i < seatrow3; i++) {
 
 // ================================================SEATS DYNAMICALLY===========================================================================
 
+//--------------------------------------FOR PREMIUM-------------------------------------------------------
 
-renderDetails()
+const seats1 = document.querySelectorAll('.seat1');
+const ticketPrice1 = document.getElementById('ticket_price1').textContent;
+
+let selectedSeats1 = [];
+let ticketCount1 = 0;
+let ticketTotal1 = 0;
+let count = seats;
+let temp = 0;
+
+if (localStorage.getItem('selectedSeats1')) {
+  selectedSeats1 = JSON.parse(localStorage.getItem('selectedSeats1'));
+  ticketTotal1 = ticketCount1 * ticketPrice1;
+}
+
+seats1.forEach(seat => {
+  if (selectedSeats1.includes(seat.id)) {
+    seat.classList.add('selected');
+    seat.style.backgroundColor = '#eee';
+    seat.style.border = "none";
+  }
+
+  seat.addEventListener('click', e => {
+
+    temp++;
+    if (temp > count) {
+      // seat.removeEventListener("click")
+      // console.log(temp) ;
+      return;
+    }
+
+    else {
+
+      // console.log(temp) ;
+      if (seat.classList.contains('selected')) {
+        seat.classList.remove('selected');
+        ticketCount1--;
+        a++;
+        selectedSeats1 = selectedSeats1.filter(s => s !== seat.id);
+      } else {
+        seat.classList.add('selected');
+        ticketCount1++;
+        selectedSeats1.push(seat.id);
+      }
+
+      ticketTotal1 = ticketCount1 * ticketPrice1;
+
+      console.log(`${ticketCount1} tickets, total cost: ${ticketTotal1}`);
+
+      // localStorage.setItem('selectedSeats', JSON.stringify(selectedSeats1));
+      amoutShowButton.innerText = ticketTotal1;
+
+    }
+
+  });
+
+
+
+});
+
+
+
+//--------------------------------------FOR GOLD-------------------------------------------------------
+
+const seats2 = document.querySelectorAll('.seat2');
+const ticketPrice2 = document.getElementById('ticket_price2').textContent;
+
+let selectedSeats2 = [];
+let ticketCount2 = 0;
+let ticketTotal2 = 0;
+temp = 0;
+
+if (localStorage.getItem('selectedSeats2')) {
+  selectedSeats2 = JSON.parse(localStorage.getItem('selectedSeats2'));
+  ticketTotal2 = ticketCount2 * ticketPrice2;
+}
+
+seats2.forEach(seat => {
+  if (selectedSeats2.includes(seat.id)) {
+    seat.classList.add('selected');
+    seat.style.backgroundColor = '#eee';
+    seat.style.border = "none";
+  }
+
+  seat.addEventListener('click', e => {
+
+    temp++;
+    if (temp > count) {
+      return;
+    }
+    else {
+
+      if (seat.classList.contains('selected')) {
+        seat.classList.remove('selected');
+        ticketCount2--;
+        selectedSeats2 = selectedSeats2.filter(s => s !== seat.id);
+      } else {
+        seat.classList.add('selected');
+        ticketCount2++;
+        selectedSeats2.push(seat.id);
+      }
+
+      ticketTotal2 = ticketCount2 * ticketPrice2;
+
+      console.log(`${ticketCount2} tickets, total cost: ${ticketTotal2}`);
+
+      // localStorage.setItem('selectedSeats2', JSON.stringify(selectedSeats2));
+      amoutShowButton.innerText = ticketTotal2;
+    }
+  });
+});
+//--------------------------------------FOR GOLD-------------------------------------------------------
+
+const seats3 = document.querySelectorAll('.seat3');
+const ticketPrice3 = document.getElementById('ticket_price3').textContent;
+
+let selectedSeats3 = [];
+let ticketCount3 = 0;
+let ticketTotal3 = 0;
+temp = 0;
+
+if (localStorage.getItem('selectedSeats3')) {
+  selectedSeats3 = JSON.parse(localStorage.getItem('selectedSeats3'));
+  ticketTotal3 = ticketCount3 * ticketPrice3;
+}
+
+seats3.forEach(seat => {
+  if (selectedSeats3.includes(seat.id)) {
+    seat.classList.add('selected');
+    seat.style.backgroundColor = '#eee';
+    seat.style.border = "none";
+  }
+
+  seat.addEventListener('click', e => {
+
+    temp++;
+    if (temp > count) {
+      return;
+    }
+    else {
+
+      if (seat.classList.contains('selected')) {
+        seat.classList.remove('selected');
+        ticketCount3--;
+        selectedSeats3 = selectedSeats3.filter(s => s !== seat.id);
+      } else {
+        seat.classList.add('selected');
+        ticketCount3++;
+        selectedSeats3.push(seat.id);
+      }
+
+      ticketTotal3 = ticketCount3 * ticketPrice3;
+
+      console.log(`${ticketCount3} tickets, total cost: ${ticketTotal3}`);
+      amoutShowButton.innerText = ticketTotal3;
+
+    }
+
+  });
+});
+
+
+
+const amountBtnContainer = document.querySelector(".seat_type1");
+
+seats1.forEach(seat => {
+  seat.addEventListener("click", () => {
+    amountBtnContainer.classList.add("display_flex");
+  })
+});
+seats2.forEach(seat => {
+  seat.addEventListener("click", () => {
+    amountBtnContainer.classList.add("display_flex");
+  })
+});
+seats3.forEach(seat => {
+  seat.addEventListener("click", () => {
+    amountBtnContainer.classList.add("display_flex");
+  })
+});
+
+
+
+amountShowAnchorEl.addEventListener("click", function(event) {
+  event.preventDefault();
+  const price = document.querySelector('.seat_total_amount').innerText;
+  window.location.href = '../HTML/payment.html?price='+price ;
+  localStorage.setItem('selectedSeats1', JSON.stringify(selectedSeats1));
+  localStorage.setItem('selectedSeats2', JSON.stringify(selectedSeats2));
+  localStorage.setItem('selectedSeats3', JSON.stringify(selectedSeats3));
+
+});
+
+
+window.addEventListener("DOMContentLoaded", () => renderDetails())
