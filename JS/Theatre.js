@@ -79,12 +79,14 @@ const getLiveEvents = async () => {
 
   // TEMPLATE FOR TIMEING====================================================================
   theatre.map((ele) => {
+
     let template1 = "";
     let timeslots = ele.Time;
-    timeslots.map((ele) => {
+    timeslots.map((ele1) => {
+    console.log(ele.id)
       template1 += `
   <div class="timing">
-      <span class="booking_timing ${ele.id}">${ele}</span>
+      <span class="booking_timing ${ele.id}">${ele1}</span>
       <p class="booking_flexibility"><span> <i class="fa-solid fa-circle"></i></span>Cancellation Available</p>
   </div>
   `;
@@ -166,9 +168,10 @@ const time = document.querySelector(".movie_timing");
 const chooseseatModal = document.querySelector(".chooseseats_body");
 const theatrelocation = document.querySelector(".theatre_location");
 
-bookingCont.addEventListener("click", (e) => {
+theatrelocation.addEventListener("click", (e) => {
   if (e.target.classList.contains("booking_timing")) {
-    currentTheatreName = e.target.classList[1];
+    currentTheatreName = e.target.classList[1] ;
+    console.log(currentTheatreName)
     termsandconditions.style.display = "block";
   }
 });
@@ -187,7 +190,7 @@ accept.addEventListener("click", () => {
 });
 
 
-
+ 
 
 
 
